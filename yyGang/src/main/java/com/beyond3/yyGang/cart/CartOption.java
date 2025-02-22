@@ -1,4 +1,4 @@
-package com.beyond3.yyGang.hfunction;
+package com.beyond3.yyGang.cart;
 
 import com.beyond3.yyGang.nsupplement.NSupplement;
 import jakarta.persistence.Column;
@@ -13,19 +13,23 @@ import lombok.Getter;
 
 @Entity
 @Getter
-@Table(name = "h_functional_category")
-public class HFunctionalCategory {
-
+@Table(name = "cart_option")
+public class CartOption {
     @Id
     @GeneratedValue
-    @Column(name = "hfunc_id")
-    private Long hfuncId;
+    @Column(name = "cart_option_id")
+    private Long cartOptionID;
+
+    private int quantity; // 수량
+
+    private int price;  // 가격
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "products_id")
-    private NSupplement nSupplement;  // 상품ID 외래키
+    private NSupplement nSupplement;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "health_id")
-    private HFunctionalItem hFunctionalItem; // 건강 기능 ID 외래키
 }
