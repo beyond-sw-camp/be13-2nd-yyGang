@@ -1,4 +1,3 @@
-
 package com.beyond3;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
